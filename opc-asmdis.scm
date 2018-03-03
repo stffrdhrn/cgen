@@ -41,7 +41,9 @@ const char *
 "
     default :
       /* xgettext:c-format */
-      fprintf (stderr, _(\"Unrecognized field %d while parsing.\\n\"), opindex);
+      opcodes_error_handler
+	(_(\"internal error: unrecognized field %d while parsing\"),
+	 opindex);
       abort ();
   }
 
@@ -136,9 +138,10 @@ void
 "
     default :
       /* xgettext:c-format */
-      fprintf (stderr, _(\"Unrecognized field %d while printing insn.\\n\"),
-	       opindex);
-    abort ();
+      opcodes_error_handler
+	(_(\"internal error: unrecognized field %d while printing insn\"),
+	 opindex);
+      abort ();
   }
 }\n\n")
 )

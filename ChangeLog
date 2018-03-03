@@ -1,3 +1,18 @@
+2018-03-03  Alan Modra  <amodra@gmail.com>
+
+	* desc-cpu.scm (opcodes_error_handler): Define.
+	(@arch@_cgen_rebuild_tables): Use opcodes_error_handler.
+	(@arch@_cgen_cpu_open): Likewise.
+	* opc-asmdis.scm (@arch@_cgen_parse_operand): Likewise.
+	(@arch@_cgen_print_operand): Likewise.
+	* opc-ibld.scm (@arch@_cgen_get_int_operand): Likewise.
+	(@arch@_cgen_get_vma_operand): Likewise.
+	(@arch@_cgen_set_int_operand): Likewise.
+	(@arch@_cgen_set_vma_operand): Likewise.
+	(@arch@_cgen_insert_operand): Likewise.
+	(@arch@_cgen_extract_operand): Likewise.
+	* utils.scm: Update emitted copyright dates.
+
 2017-04-13  Alan Modra  <amodra@gmail.com>
 
 	PR 20946

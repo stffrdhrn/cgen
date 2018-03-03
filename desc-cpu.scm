@@ -588,6 +588,11 @@ static const CGEN_IBASE @arch@_cgen_insn_table[MAX_INSNS] =
 (define (/gen-cpu-open)
   (string-append
    "\
+#ifndef opcodes_error_handler
+#define opcodes_error_handler(...) \\
+  fprintf (stderr, __VA_ARGS__); fputc ('\\n', stderr)
+#endif
+
 static const CGEN_MACH * lookup_mach_via_bfd_name (const CGEN_MACH *, const char *);
 static void build_hw_table      (CGEN_CPU_TABLE *);
 static void build_ifield_table  (CGEN_CPU_TABLE *);
@@ -748,8 +753,11 @@ static void
 	{
 	  if (cd->insn_chunk_bitsize != 0 && cd->insn_chunk_bitsize != mach->insn_chunk_bitsize)
 	    {
-	      fprintf (stderr, \"@arch@_cgen_rebuild_tables: conflicting insn-chunk-bitsize values: `%d' vs. `%d'\\n\",
-		       cd->insn_chunk_bitsize, mach->insn_chunk_bitsize);
+	      opcodes_error_handler
+		(/* xgettext:c-format */
+		 _(\"internal error: @arch@_cgen_rebuild_tables: \"
+		   \"conflicting insn-chunk-bitsize values: `%d' vs. `%d'\"),
+		 cd->insn_chunk_bitsize, mach->insn_chunk_bitsize);
 	      abort ();
 	    }
 
@@ -828,8 +836,11 @@ CGEN_CPU_DESC
 	  endian = va_arg (ap, enum cgen_endian);
 	  break;
 	default :
-	  fprintf (stderr, \"@arch@_cgen_cpu_open: unsupported argument `%d'\\n\",
-		   arg_type);
+	  opcodes_error_handler
+	    (/* xgettext:c-format */
+	     _(\"internal error: @arch@_cgen_cpu_open: \"
+	       \"unsupported argument `%d'\"),
+	     arg_type);
 	  abort (); /* ??? return NULL? */
 	}
       arg_type = va_arg (ap, enum cgen_cpu_open_arg);
@@ -844,7 +855,9 @@ CGEN_CPU_DESC
   if (endian == CGEN_ENDIAN_UNKNOWN)
     {
       /* ??? If target has only one, could have a default.  */
-      fprintf (stderr, \"@arch@_cgen_cpu_open: no endianness specified\\n\");
+      opcodes_error_handler
+	(/* xgettext:c-format */
+	 _(\"internal error: @arch@_cgen_cpu_open: no endianness specified\"));
       abort ();
     }
 

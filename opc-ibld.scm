@@ -30,8 +30,9 @@ int
 "
     default :
       /* xgettext:c-format */
-      fprintf (stderr, _(\"Unrecognized field %d while getting int operand.\\n\"),
-		       opindex);
+      opcodes_error_handler
+	(_(\"internal error: unrecognized field %d while getting int operand\"),
+	 opindex);
       abort ();
   }
 
@@ -52,8 +53,9 @@ bfd_vma
 "
     default :
       /* xgettext:c-format */
-      fprintf (stderr, _(\"Unrecognized field %d while getting vma operand.\\n\"),
-		       opindex);
+      opcodes_error_handler
+	(_(\"internal error: unrecognized field %d while getting vma operand\"),
+	 opindex);
       abort ();
   }
 
@@ -87,8 +89,9 @@ void
 "
     default :
       /* xgettext:c-format */
-      fprintf (stderr, _(\"Unrecognized field %d while setting int operand.\\n\"),
-		       opindex);
+      opcodes_error_handler
+	(_(\"internal error: unrecognized field %d while setting int operand\"),
+	 opindex);
       abort ();
   }
 }
@@ -106,8 +109,9 @@ void
 "
     default :
       /* xgettext:c-format */
-      fprintf (stderr, _(\"Unrecognized field %d while setting vma operand.\\n\"),
-		       opindex);
+      opcodes_error_handler
+	(_(\"internal error: unrecognized field %d while setting vma operand\"),
+	 opindex);
       abort ();
   }
 }
@@ -197,8 +201,9 @@ const char *
 "
     default :
       /* xgettext:c-format */
-      fprintf (stderr, _(\"Unrecognized field %d while building insn.\\n\"),
-	       opindex);
+      opcodes_error_handler
+	(_(\"internal error: unrecognized field %d while building insn\"),
+	 opindex);
       abort ();
   }
 
@@ -247,8 +252,9 @@ int
 "
     default :
       /* xgettext:c-format */
-      fprintf (stderr, _(\"Unrecognized field %d while decoding insn.\\n\"),
-	       opindex);
+      opcodes_error_handler
+	(_(\"internal error: unrecognized field %d while decoding insn\"),
+	 opindex);
       abort ();
     }
 
