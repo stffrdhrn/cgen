@@ -1,3 +1,8 @@
+2018-11-20  Jose E. Marchesi  <jose.marchesi@oracle.com>
+
+* doc/running.texi (Set up the arguments for cgen): Raised from a
+	subsection to a section.
+
 2018-03-03  Alan Modra  <amodra@gmail.com>
 
 	* desc-cpu.scm (opcodes_error_handler): Define.
