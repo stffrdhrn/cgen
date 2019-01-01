@@ -1,6 +1,10 @@
+2019-01-01  Alan Modra  <amodra@gmail.com>
+
+	* utils.scm: Update emitted copyright dates.
+
 2018-11-20  Jose E. Marchesi  <jose.marchesi@oracle.com>
 
-* doc/running.texi (Set up the arguments for cgen): Raised from a
+	* doc/running.texi (Set up the arguments for cgen): Raised from a
 	subsection to a section.
 
 2018-03-03  Alan Modra  <amodra@gmail.com>

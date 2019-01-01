@@ -1310,7 +1310,7 @@
   (cons "\
 THIS FILE IS MACHINE GENERATED WITH CGEN.
 
-Copyright (C) 1996-2018 Free Software Foundation, Inc.
+Copyright (C) 1996-2019 Free Software Foundation, Inc.
 "
 	"\
    This file is free software; you can redistribute it and/or modify
@@ -1335,7 +1335,7 @@ Copyright (C) 1996-2018 Free Software Foundation, Inc.
   (cons "\
 THIS FILE IS MACHINE GENERATED WITH CGEN.
 
-Copyright (C) 2000-2018 Red Hat, Inc.
+Copyright (C) 2000-2019 Red Hat, Inc.
 "
 	"\
 "))
