@@ -2027,7 +2027,7 @@ The mode the value is to be interpreted in.
 The index of the hardware element. This is used to mate the hardware
 element with the instruction field that selects it, and must be the name
 of an ifield entry. (*Note: The index may be other things besides
-ifields in the future.)  It must not be a multi-ifield, currently.
+ifields in the future.)
 
 @subsection handlers
 Sometimes it's necessary to escape to C to parse assembler, or print

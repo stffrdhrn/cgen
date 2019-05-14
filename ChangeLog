@@ -1,3 +1,8 @@
+2019-05-14  Jose E. Marchesi  <jose.marchesi@oracle.com>
+
+	* doc/rtl.texi (Instruction operands): Remove obsolete comment
+	about multi-ifields.
+
 2019-01-01  Alan Modra  <amodra@gmail.com>
 
 	* utils.scm: Update emitted copyright dates.
