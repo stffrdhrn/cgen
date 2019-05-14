@@ -1,5 +1,15 @@
 2019-05-14  Jose E. Marchesi  <jose.marchesi@oracle.com>
 
+	* opcodes.scm (gen-ifield-default-type): Use int64_t for fields
+	wider than 32-bits.
+	(/gen-parse-number): Use u?int64_t for > 32-bit modes.
+	(gen-ifield-value-decl): Fix call to gen-ifield-default-type.
+	(<ifield>, gen-insert): Likewise.
+	(<ifield>, gen-extract): Likewise.
+	* opc-asmdis.scm (char): Likewise.
+
+2019-05-14  Jose E. Marchesi  <jose.marchesi@oracle.com>
+
 	* doc/rtl.texi (Instruction operands): Remove obsolete comment
 	about multi-ifields.
 

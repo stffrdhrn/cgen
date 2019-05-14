@@ -32,7 +32,7 @@ const char *
 {
   const char * errmsg = NULL;
   /* Used by scalar operands that still need to be parsed.  */
-  " (gen-ifield-default-type) " junk ATTRIBUTE_UNUSED;
+  " (gen-ifield-default-type #f) " junk ATTRIBUTE_UNUSED;
 
   switch (opindex)
     {

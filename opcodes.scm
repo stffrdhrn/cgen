@@ -73,9 +73,10 @@
 
 ; Default type of variable to use to hold ifield value.
 
-(define (gen-ifield-default-type)
-  ; FIXME: Use long for now.
-  "long"
+(define (gen-ifield-default-type f)
+  (if (and f (> (mode:bits (ifld-mode f)) 32))
+      "int64_t"
+      "long")
 )
 
 ; Given field F, return a C definition of a variable big enough to hold
@@ -83,7 +84,7 @@
 
 (define (gen-ifield-value-decl f)
   (gen-obj-sanitize f (string-append "  "
-				     (gen-ifield-default-type)
+				     (gen-ifield-default-type f)
 				     " " (gen-sym f) ";\n"))
 )
 
@@ -113,7 +114,7 @@
       (if need-extra?
 	  (string-append "      {\n"
 			 "        "
-			 (gen-ifield-default-type)
+			 (gen-ifield-default-type self)
 			 " value = " varname ";\n")
 	  "")
       (if encode
@@ -175,7 +176,7 @@
      (string-append
       (if need-extra?
 	  (string-append "      {\n        "
-			 (gen-ifield-default-type)
+			 (gen-ifield-default-type self)
 			 " value;\n  ")
 	  "")
       "      length = "
@@ -372,8 +373,12 @@
    ; This is to pacify gcc 4.x which will complain about
    ; incorrect signed-ness of pointers passed to functions.
    (case (obj:name mode)
-	 ((QI HI SI INT) "(long *)")
-	 ((BI UQI UHI USI UINT) "(unsigned long *)")
+     ((QI HI SI DI INT)
+      (if (> (mode:bits mode) 32) "(int64_t *)" "(long *)"))
+     ((BI UQI UHI USI UDI UINT)
+      (if (> (mode:bits mode) 32) "(uint64_t *)" "(unsigned long *)"))
+     (else (error "unsupported (as yet) mode for parsing"
+                  (obj:name mode)))
    )
    " (& " result-var-name
    "));\n"
