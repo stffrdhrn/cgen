@@ -1086,6 +1086,13 @@
      COMPARE
      #f
 )
+; Detect NaNs
+(drn (unordered &options &mode s1 s2)
+     BI
+     (OPTIONS ANYNUMMODE RTX RTX) (NA NA MATCHEXPR MATCH2)
+     COMPARE
+     #f
+)
 
 ; Set membership.
 ; Useful in ifield assertions.

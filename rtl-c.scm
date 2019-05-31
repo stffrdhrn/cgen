@@ -1897,6 +1897,10 @@
 (define-fn geu (*estate* options mode s1 s2)
   (s-cmpop *estate* 'geu ">=" mode s1 s2)
 )
+(define-fn unordered (*estate* options mode s1 s2)
+  (s-cmpop *estate* 'unordered #f mode s1 s2)
+)
+
 
 (define-fn member (*estate* options mode value set)
   ;; NOTE: There are multiple evalutions of VALUE in the generated code.
