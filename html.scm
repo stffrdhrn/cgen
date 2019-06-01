@@ -111,7 +111,7 @@ See the input .cpu file(s) for copyright information.
    "This documentation was machine generated from the cgen cpu description\n"
    "files for this architecture.\n"
    "<br>\n"
-   "<a href=\"http://sources.redhat.com/cgen/\">http://sources.redhat.com/cgen/</a>\n"
+   "<a href=\"https://sourceware.org/cgen/\">https://sourceware.org/cgen/</a>\n"
    "</body>\n"
    "</html>\n"
    )

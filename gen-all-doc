@@ -18,7 +18,7 @@
 # <http://www.gnu.org/licenses/>.
 #
 
-# Run this script in the src/cgen directory.
+# Run this script in the binutils-gdb/cgen directory.
 
 # Exit on any error.
 set -e
@@ -26,28 +26,46 @@ set -e
 # For debugging.
 set -x
 
-# ??? Some are missing, need to add them after some research.
-#../cpu/m32c.cpu
-#../cpu/xc16x.cpu
+# ??? Broken archs not in list, grouped by error
+# h-prefixreg error
+#../cpu/cris.cpu
+# Error: unexpected operand: #f
+# ../cpu/m32c.cpu
+# ../cpu/xc16x.cpu
+# cpu/ia32.cpu
+# sh64-compact.cpu:316:3: Error: Instruction has opcode bits outside of its mask
+# ../cpu/sh.cpu
+# ia64.cpu:924:invalid argument to %sym: (if (eq? (string-length "") 0) "" ".")
+# ../cpu/ia64.cpu
+# sparc.cpu:389:1: define-hardware: hardware already defined: h-gr
+# cpu/sparc.cpu
+
+# Archs in parent directly should be from the binutils-gdb project. Others are
+# hosted here in cgen.
+
 archs="
-cpu/fr30.cpu
-cpu/arm.cpu
+../cpu/epiphany.cpu
+../cpu/fr30.cpu
 ../cpu/frv.cpu
-cpu/i960.cpu
-cpu/ip2k.cpu
+../cpu/ip2k.cpu
 ../cpu/iq2000.cpu
 ../cpu/lm32.cpu
 ../cpu/m32r.cpu
-cpu/mep.cpu
+../cpu/mep.cpu
 ../cpu/mt.cpu
-cpu/openrisc.cpu
+../cpu/or1k.cpu
+../cpu/xstormy16.cpu
+cpu/arm.cpu
+cpu/i960.cpu
+cpu/m68k.cpu
+cpu/play.cpu
+cpu/powerpc.cpu
 cpu/sh.cpu
-cpu/xstormy16.cpu
 "
 
 if [ ! -f sim.scm ]
 then
-    echo "Not in the src/cgen directory." >& 2
+    echo "Not in the cgen source directory." >& 2
     exit 1
 fi
 
@@ -66,7 +84,7 @@ export cgendir=`pwd`
 
   for a in $archs
   do
-    archfile=../$a
+    archfile=$cgendir/$a
     arch=$(basename $archfile .cpu)
 
     case $arch in
@@ -129,7 +147,7 @@ EOF
     arm-thumb.*) name="ARM Thumb" ;;
     frv-1.*) name="FRV FR400" ;;
     frv-2.*) name="FRV FR500" ;;
-    openrisc.*) name="Openrisc" ;;
+    or1k.*) name="OpenRISC" ;;
     xstormy16.*) name="Xstormy16" ;;
     *) name=`echo ${html/.html} | tr $lower $upper` ;;
     esac
